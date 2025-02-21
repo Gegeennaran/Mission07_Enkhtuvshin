@@ -1,0 +1,47 @@
+@model WebApplication1.Models.Application
+@{
+    ViewData["Title"] = "Enter Movies";
+}
+
+
+<div class="text-center">
+<h1 class="display-4">Enter Movies Into The Collection</h1>
+</div>
+<form method="post">
+    <label asp-for="Category">Category:</label>
+    <input asp-for="Category" />
+    <br/>
+    <label asp-for="Title">Title:</label>
+    <input asp-for="Title" />
+    <br/>
+    <label asp-for="Year">Year:</label>
+    <input asp-for="Year" min="1880" max="2099" />
+    <br/>
+    <label asp-for="Director">Director:</label>
+    <input asp-for="Director" />
+    <br/>
+    <label asp-for="Rating">Rating:</label>
+    <select asp-for="Rating" >
+        <option value="G">G</option>
+        <option value="PG">PG</option>
+        <option value="PG-13">PG-13</option>
+        <option value="R">R</option>
+    </select>
+    <br/>
+    <!-- This should be optional-->
+    <label asp-for="Edited">Edited:</label> 
+    <select asp-for="Edited">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br/>
+    <!-- This should be optional-->
+    <label asp-for="LendTo">Lend To:</label>
+    <input asp-for="LendTo"/>
+    <br/>
+    <!-- This should be optional-->
+    <label asp-for="Notes">Notes:</label>
+    <input asp-for="Notes" maxlength="25"/>  <!-- Maximum length is 25-->
+    <br/>
+    <button type="submit">Submit Application</button>
+</form>
