@@ -1,6 +1,9 @@
-@model WebApplication1.Models.Application
+@using System.Collections
+@model WebApplication1.Models.Movie
 @{
     ViewData["Title"] = "Enter Movies";
+    var categories = ViewBag.Categories as List<WebApplication1.Models.Category>;
+
 }
 
 
@@ -8,18 +11,25 @@
 <h1 class="display-4">Enter Movies Into The Collection</h1>
 </div>
 <form method="post">
-    <label asp-for="Category">Category:</label>
-    <input asp-for="Category" />
+    <!-- CATEGORY DROPDOWN -->
+    <div class="form-group">
+        <label asp-for="CategoryId">Category:</label>
+        <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(categories, "CategoryId", "CategoryName"))">
+            <option value="">-- Select a Category --</option>
+        </select>
+    </div>
     <br/>
     <label asp-for="Title">Title:</label>
     <input asp-for="Title" />
     <br/>
     <label asp-for="Year">Year:</label>
-    <input asp-for="Year" min="1880" max="2099" />
+    <input asp-for="Year" max="2099" />
     <br/>
+    <!-- This should be optional-->
     <label asp-for="Director">Director:</label>
     <input asp-for="Director" />
     <br/>
+    <!-- This should be optional-->
     <label asp-for="Rating">Rating:</label>
     <select asp-for="Rating" >
         <option value="G">G</option>
@@ -28,7 +38,6 @@
         <option value="R">R</option>
     </select>
     <br/>
-    <!-- This should be optional-->
     <label asp-for="Edited">Edited:</label> 
     <select asp-for="Edited">
         <option value="true">Yes</option>
@@ -36,12 +45,18 @@
     </select>
     <br/>
     <!-- This should be optional-->
-    <label asp-for="LendTo">Lend To:</label>
-    <input asp-for="LendTo"/>
+    <label asp-for="LentTo">Lend To:</label>
+    <input asp-for="LentTo"/>
+    <br/>
+    <label asp-for="CopiedToPlex">Copied To Plex:</label>
+    <select asp-for="CopiedToPlex">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
     <br/>
     <!-- This should be optional-->
     <label asp-for="Notes">Notes:</label>
     <input asp-for="Notes" maxlength="25"/>  <!-- Maximum length is 25-->
     <br/>
-    <button type="submit">Submit Application</button>
+    <button type="submit">Submit Movie</button>
 </form>
