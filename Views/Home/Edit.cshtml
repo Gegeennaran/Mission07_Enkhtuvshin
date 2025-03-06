@@ -10,7 +10,7 @@
 
 <form asp-action="Edit" method="post" class="container">
     <input type="hidden" asp-for="MovieId" />
-    
+    <!-- CATEGORY DROPDOWN -->
     <div class="form-group">
         <label asp-for="CategoryId" class="control-label">Category</label>
         <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(categories, "CategoryId", "CategoryName"))">

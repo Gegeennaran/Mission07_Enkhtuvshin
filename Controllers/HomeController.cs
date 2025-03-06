@@ -25,6 +25,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult EnterMovies()
     {
+        //View bag
         ViewBag.Categories = _context.Categories.ToList();
         return View();
     }
@@ -33,6 +34,7 @@ public class HomeController : Controller
     {
         _context.Movies.Add(response); //add record to Database
         _context.SaveChanges();
+        //View bag
         ViewBag.Categories = _context.Categories.ToList();
         return View("Confirmation", response);
     }
@@ -53,6 +55,7 @@ public class HomeController : Controller
         {
             return NotFound();
         }
+        //View bag
         ViewBag.Categories = _context.Categories.ToList();
 
         return View(movie);
@@ -74,6 +77,7 @@ public class HomeController : Controller
             _context.SaveChanges();
             return RedirectToAction(nameof(List));
         }
+        //View bag
         ViewBag.Categories = _context.Categories.ToList();
         return View(movie);
     }
